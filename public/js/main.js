@@ -1,6 +1,6 @@
 'use strict'
 
-let app = angular.module('AppChamados', ['ui.router'])
+var app = angular.module('AppChamados', ['ui.router'])
 
 app.config(myConfig)
 
@@ -21,6 +21,24 @@ function myConfig($stateProvider, $urlRouterProvider) {
       }
     }
   })
+
+  .state('cnsUsuario', {
+    url: '/usuario',
+    views: {
+      '': {
+        templateUrl: './views/cnsUsuario.html',
+        controller: 'UsuarioController',
+        controllerAs: 'vm'
+      },
+      'menu': {
+        templateUrl: './views/menu.html'
+      }
+    }
+  })
+
+
+
+
 
   $urlRouterProvider.otherwise('/home')
 
