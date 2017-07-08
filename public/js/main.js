@@ -36,6 +36,17 @@ function myConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state('login', {
+    url: '/login',
+    views: {
+      '': {
+        templateUrl: './views/login.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
+      }
+    }
+  })
+
 
 
 
