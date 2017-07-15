@@ -1,32 +1,16 @@
 'use strict'
 
 const express = require('express')
-const router = express.Router()
+const router = require('./SecureRoutes')(true)
+const jwt = require('jsonwebtoken')
 
 const UsuarioModel = require('../models/UsuarioModel')
-
-
-router.post('/login', (req, res) => {
-  const body = req.body
-  const query = { usuario: body.usuario, senha: body.senha }
-  UsuarioModel.findOne(query, (err, data) => {    
-    if (err) {
-      return res.status(500).json({error: true, message: err})
-    }
-    if ( data ) {
-      return res.status(200).json({error: false, message: 'Usuário Logado com Sucesso'})
-    } else {
-      return res.status(200).json({error: true, message: 'Usuário ou Senha Inválida'})
-    }
-  })
-})
 
  // C- Create
  // R- Retrieve
  // U- Update
  // D- Delete
-
-
+ 
  // create
  router.post('/create', (req, res) => {  
   const body = req.body  
@@ -74,8 +58,5 @@ router.post('/login', (req, res) => {
         return res.status(200).json(data)
     })
   })
-
-
-
 
   module.exports = router
